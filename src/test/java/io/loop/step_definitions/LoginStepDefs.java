@@ -1,5 +1,6 @@
 package io.loop.step_definitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,15 +16,17 @@ public class LoginStepDefs {
 
     LoginPage loginPage = new LoginPage();
 
+
     @Given("user is on Docuport login page")
     public void user_is_on_docuport_login_page() {
         Driver.getDriver().get(ConfigurationReader.getProperties("env"));
     }
+
     @When("user enters username for client")
     public void user_enters_username_for_client() {
         BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.large);
+        assertTrue(loginPage.loginButton.isDisplayed());
         loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_CLIENT);
-        assertTrue(3==4);
     }
     @When("user enters password for client")
     public void user_enters_password_for_client() {
@@ -33,6 +36,7 @@ public class LoginStepDefs {
     public void user_click_login_button() {
 
     }
+
     @Then("user should be able to see the home for client")
     public void user_should_be_able_to_see_the_home_for_client() {
 

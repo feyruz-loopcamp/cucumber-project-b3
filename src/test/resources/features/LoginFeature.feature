@@ -9,8 +9,7 @@ Feature: Docuport Login Logout Feature
     And user clicks login button
     Then user should be able to see the home for client
 
-
-   @smoke
+  @regression @smoke
   Scenario: Login as an employee
     Given user is on Docuport login page
     When user enters username for employee
