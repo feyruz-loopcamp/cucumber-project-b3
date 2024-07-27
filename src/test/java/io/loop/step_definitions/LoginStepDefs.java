@@ -1,14 +1,8 @@
 package io.loop.step_definitions;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import io.loop.pages.LoginPage;
-import io.loop.utilities.BrowserUtils;
-import io.loop.utilities.ConfigurationReader;
-import io.loop.utilities.DocuportConstants;
-import io.loop.utilities.Driver;
+import io.loop.utilities.*;
 
 import static org.junit.Assert.assertTrue;
 
@@ -52,6 +46,32 @@ public class LoginStepDefs {
     }
     @Then("user should see the home page for employee")
     public void user_should_see_the_home_page_for_employee() {
+
+    }
+
+    @When("user enters username for advisor")
+    public void user_enters_username_for_advisor() {
+
+    }
+    @When("user enters password for advisor")
+    public void user_enters_password_for_advisor() {
+
+    }
+    @Then("user should see the home page for advisor")
+    public void user_should_see_the_home_page_for_advisor() {
+
+    }
+
+    @When("user enters username for supervisor")
+    public void user_enters_username_for_supervisor() {
+
+    }
+    @When("user enters password for supervisor")
+    public void user_enters_password_for_supervisor() {
+
+    }
+    @Then("user should see the home page for supervisor")
+    public void user_should_see_the_home_page_for_supervisor() {
 
     }
 }
