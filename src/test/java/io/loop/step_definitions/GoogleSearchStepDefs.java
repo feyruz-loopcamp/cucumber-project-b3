@@ -4,6 +4,7 @@ import io.cucumber.java.en.*;
 import io.loop.pages.GoogleSearchPage;
 import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.ConfigurationReader;
+import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.Keys;
 
@@ -61,6 +62,17 @@ public class GoogleSearchStepDefs {
             }
             assertEquals(p + " - Google Search", Driver.getDriver().getTitle());
         });
+    }
+
+    @When("user search for the {string}")
+    public void user_search_for_the(String country) {
+        googleSearchPage.searchBox.sendKeys("What is the capital of " + country + Keys.ENTER);
+        BrowserUtils.justWait(DocuportConstants.small);
+    }
+    @Then("user should see the {string} in the result")
+    public void user_should_see_the_in_the_result(String capital) {
+        assertEquals("Expected capital city: " + capital + " does NOT match with actual one: " + googleSearchPage.capital.getText(),
+                googleSearchPage.capital.getText(), capital);
     }
 }
 
