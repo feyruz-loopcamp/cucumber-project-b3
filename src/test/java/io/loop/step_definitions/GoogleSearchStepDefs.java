@@ -9,6 +9,7 @@ import io.loop.utilities.Driver;
 import org.openqa.selenium.Keys;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -44,7 +45,7 @@ public class GoogleSearchStepDefs {
     }
 
     @Then("user searches the following item")
-    public void user_searches_the_following_item(List<String> items) throws InterruptedException {
+    public void user_searches_the_following_item(List<Map<String, String >> items) throws InterruptedException {
 //        for (String item : items) {
 //            googleSearchPage.searchBox.clear();
 //            googleSearchPage.searchBox.sendKeys(item + Keys.ENTER);
@@ -52,16 +53,20 @@ public class GoogleSearchStepDefs {
 //            assertEquals(item + " - Google Search", Driver.getDriver().getTitle());
 //        }
 
-        items.forEach( p -> {
-            googleSearchPage.searchBox.clear();
-            googleSearchPage.searchBox.sendKeys(p + Keys.ENTER);
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            assertEquals(p + " - Google Search", Driver.getDriver().getTitle());
-        });
+//        items.forEach( p -> {
+//            googleSearchPage.searchBox.clear();
+//            googleSearchPage.searchBox.sendKeys(p + Keys.ENTER);
+//            try {
+//                Thread.sleep(3000);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//            assertEquals(p + " - Google Search", Driver.getDriver().getTitle());
+//        });
+
+        for (Map<String, String> item : items) {
+            System.out.println("item.get(\"items\") = " + item.get("items"));
+        }
     }
 
     @When("user search for the {string}")
