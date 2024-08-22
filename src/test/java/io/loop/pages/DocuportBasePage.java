@@ -1,5 +1,6 @@
 package io.loop.pages;
 
+import io.cucumber.java.an.E;
 import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.Driver;
 import org.apache.logging.log4j.LogManager;
@@ -9,13 +10,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.NoSuchElementException;
+
 public class DocuportBasePage {
 
     private static final Logger LOG = LogManager.getLogger();
 
     public String getElementText(String text){
-        String xpath = "//*[normalize-space()='"+text+"']";
-        return Driver.getDriver().findElement(By.xpath(xpath)).getText();
+        try {
+            String xpath = "//*[normalize-space()='" + text + "']";
+            return Driver.getDriver().findElement(By.xpath(xpath)).getText();
+        } catch (Exception e){
+            return "no such button";
+        }
     }
 
     public WebElement getElement(String text){
@@ -44,6 +51,20 @@ public class DocuportBasePage {
                 throw new IllegalArgumentException();
         }
     }
+
+    public WebElement leftNavReturnButton (String button) {
+        WebElement pageButton;
+        try {
+            pageButton = Driver.getDriver().findElement(By.xpath("//span[.='" + button + "']"));
+            return pageButton;
+        } catch (NoSuchElementException e) {
+            LOG.error("No button: " + button + " exist");
+            return null;
+        } catch (Exception e){
+            return null;
+        }
+    }
+
 
     public DocuportBasePage(){
         PageFactory.initElements(Driver.getDriver(), this);

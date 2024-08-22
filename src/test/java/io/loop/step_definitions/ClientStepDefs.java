@@ -8,6 +8,7 @@ import io.loop.utilities.BrowserUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.internal.runners.model.EachTestNotifier;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -23,9 +24,11 @@ public class ClientStepDefs {
     public void user_validates_text_is_displayed(String text) {
         BrowserUtils.justWait(5000);
        // assertTrue(loginPage.getElement(text).isDisplayed());
-        String actual = loginPage.getElementText(text);
+        String actual;
+        String expected = text;
+        actual = loginPage.getElementText(text);
        // assertEquals("Actual text: " + actual + " does NOT match expected: " +text, actual, text);
-        softAssertions.assertThat(actual).isEqualTo("sdsdsd");
+        softAssertions.assertThat(actual).isEqualTo(expected);
     }
 
     @When("user clicks {string} button")
@@ -37,5 +40,21 @@ public class ClientStepDefs {
     @When("user validates all assertions")
     public void user_validates_all_assertions() {
         softAssertions.assertAll();
+    }
+
+    @Then("user validate {string} button is displayed")
+    public void user_validate_button_is_displayed(String button) {
+        boolean actual;
+        try {
+            actual = clientPage.leftNavReturnButton(button).isDisplayed();
+        } catch (NullPointerException e){
+            actual = false;
+        }
+
+        boolean expected = true;
+        softAssertions.assertThat(actual)
+                .as("Validating button: " + button)
+                .isEqualTo(expected);
+        LOG.info("Expected button: {}.", button);
     }
 }
