@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "io/loop/step_definitions",
         dryRun = false,
-        tags = "@moreSoftAssertion",
+        tags = "@B2G3-305",
         monochrome = false,
         publish = false
 )
