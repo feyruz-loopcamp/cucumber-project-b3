@@ -3,7 +3,7 @@ Feature: Docuport Login Logout Feature
   Background:
     Given user is on Docuport login page
 
-  @smoke
+  @smoke @batch4
   Scenario: Login as a client
     #Given user is on Docuport login page
     When user enters username for client
@@ -11,7 +11,7 @@ Feature: Docuport Login Logout Feature
     And user clicks login button
     Then user should be able to see the home for client
 
-  @regression @smoke
+  @regression @smoke @batch4
   Scenario: Login as an employee
     #Given user is on Docuport login page
     When user enters username for employee
@@ -19,14 +19,14 @@ Feature: Docuport Login Logout Feature
     And user clicks login button
     Then user should see the home page for employee
 
-  @smoke
+  @smoke @batch4
   Scenario: Login as an advisor
     When user enters username for advisor
     And user enters password for advisor
     And user clicks login button
     Then user should see the home page for advisor
 
-  @smoke
+  @smoke @batch4
   Scenario: Login as an supervisor
     When user enters username for supervisor
     And user enters password for supervisor

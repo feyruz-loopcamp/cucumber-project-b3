@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "io/loop/step_definitions",
         dryRun = false,
-        tags = "@B2G3-305",
+        tags = "@batch4pages.=",
         monochrome = false,
         publish = false
 )

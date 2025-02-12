@@ -15,6 +15,7 @@ public class LoginStepDefs {
 
     @Given("user is on Docuport login page")
     public void user_is_on_docuport_login_page() {
+
         Driver.getDriver().get(ConfigurationReader.getProperties("env"));
     }
 
